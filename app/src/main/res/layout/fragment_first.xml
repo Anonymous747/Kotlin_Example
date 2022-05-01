@@ -6,76 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dp"
-            android:orientation="horizontal">
+    <RelativeLayout
+        android:id="@+id/fullscreen_content_controls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="20dp">
 
-            <RelativeLayout
+        <RelativeLayout
+            android:id="@+id/top_relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/android_icon_view"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_android" />
+
+            <TextView
+                android:id="@+id/example_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                >
-                <ImageView
-                    android:id="@+id/android_icon_view"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_android"
-                    />
-                <TextView
-                    android:id="@+id/example_text_view"
+                android:layout_marginStart="5dp"
+                android:layout_toRightOf="@+id/android_icon_view"
+                android:text="Example"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/four_k_icon_view"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:layout_toLeftOf="@+id/notification_icon_view"
+                android:src="@drawable/ic_4k_icon" />
+
+            <ImageView
+                android:id="@+id/notification_icon_view"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toLeftOf="@+id/search_icon_view"
+                android:src="@drawable/ic_notification" />
+
+            <ImageView
+                android:id="@+id/search_icon_view"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/account_icon_view"
+                android:src="@drawable/ic_search" />
+
+            <ImageView
+                android:id="@+id/account_icon_view"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_account" />
+
+        </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/tabs_relative_layout"
+                android:layout_below="@+id/top_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Example"
-                    android:layout_marginStart="5dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="30sp"
-                    android:layout_toRightOf="@+id/android_icon_view"
-                    />
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:text="Navigator"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-                <ImageView
-                    android:id="@+id/four_k_icon_view"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_4k_icon"
-                    android:layout_marginLeft="60dp"
-                    android:layout_toLeftOf="@+id/notification_icon_view"
-                    />
-                <ImageView
-                    android:id="@+id/notification_icon_view"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_notification"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toLeftOf="@+id/search_icon_view"
-                    />
-                <ImageView
-                    android:id="@+id/search_icon_view"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_search"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toLeftOf="@+id/account_icon_view"
-                    />
-                <ImageView
-                    android:id="@+id/account_icon_view"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_account"
-                    android:layout_marginLeft="5dp"
-                    android:layout_alignParentRight="true"
-                    />
-            </RelativeLayout>
-
-
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="wrap_content"
+            android:layout_height="575dp"
+            android:layout_below="@+id/tabs_relative_layout"
+            android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/single_item" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textview_first"
