@@ -9,6 +9,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.example.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -32,18 +34,25 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        val assets = createAssets()
+        val rvAssets = findViewById<RecyclerView>(R.id.rv_list)
+        rvAssets.adapter = AssetAdapter(this, assets)
+        rvAssets.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun createAssets(): List<Asset> {
+        val assets = mutableListOf<Asset>()
+        for (i in 1..150) assets.add(Asset("Asset id = #$i", "Description"))
+        return assets
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
