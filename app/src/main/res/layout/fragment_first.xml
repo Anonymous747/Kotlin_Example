@@ -35,7 +35,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/four_k_icon_view"
+                android:id="@+id/high_quality_icon_view"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="60dp"
