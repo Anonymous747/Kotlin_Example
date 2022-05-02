@@ -7,5 +7,5 @@ public class Asset(private val newName: String, private val newDescription : Str
 
     val name : String = newName
     val description : String = newDescription
-    val imageUrl : String = "https://picsum.photos/300?random=1"
+    val imageUrl : String = "https://via.placeholder.com/1264x700.png"
 }

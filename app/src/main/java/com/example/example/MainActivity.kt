@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun createAssets(): List<Asset> {
         val assets = mutableListOf<Asset>()
-        for (i in 1..150) assets.add(Asset("Asset id = #$i", "Description"))
+        for (i in 1..10) assets.add(Asset("Asset id = #$i", "Description"))
         return assets
     }
 

@@ -22,7 +22,7 @@ class AssetAdapter(private val context: Context, private val assets: List<Asset>
 
     override fun getItemCount() = assets.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(asset: Asset) {
             val assetNameView = itemView.findViewById<TextView>(R.id.asset_name)
             val descriptionView = itemView.findViewById<TextView>(R.id.description_text)
@@ -30,7 +30,7 @@ class AssetAdapter(private val context: Context, private val assets: List<Asset>
 
             assetNameView.text = asset.name
             descriptionView.text = asset.description
-            Glide.with(itemView).load(asset.imageUrl).into(imageView)
+            Glide.with(context).load(asset.imageUrl).into(imageView)
         }
     }
 }
