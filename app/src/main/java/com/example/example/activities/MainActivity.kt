@@ -1,6 +1,7 @@
 package com.example.example.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -9,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,6 +41,21 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        fun createButtons() = listOf<CustomButton>(
+            CustomButton("Navigation", View.OnClickListener {
+                setupActionBarWithNavController(navController, appBarConfiguration)
+            }, ButtonType.ButtonWithIcon),
+            CustomButton("All", View.OnClickListener {
+                Log.d("TAG", "createButtons: All tap")
+            }, ButtonType.RoundedButton),
+            CustomButton("Audiobooks", View.OnClickListener {
+                Log.d("TAG", "createButtons: Audiobooks tap")
+            }, ButtonType.RoundedButton),
+            CustomButton("Cartoons", View.OnClickListener {
+                Log.d("TAG", "createButtons: Cartoons tap")
+            }, ButtonType.RoundedButton),
+        )
 
         val buttons = createButtons()
         val rvButtons = findViewById<RecyclerView>(R.id.rv_btn_list)
@@ -48,20 +68,7 @@ class MainActivity : AppCompatActivity() {
         rvAssets.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun createButtons() = listOf<CustomButton>(
-        CustomButton("Navigation", View.OnClickListener {
-            print("Navigation tap")
-        }, ButtonType.ButtonWithIcon),
-        CustomButton("All", View.OnClickListener {
-            print("All tap")
-        }, ButtonType.RoundedButton),
-        CustomButton("Audiobooks", View.OnClickListener {
-            print("Audiobooks tap")
-        }, ButtonType.RoundedButton),
-        CustomButton("Cartoons", View.OnClickListener {
-            print("Cartoons tap")
-        }, ButtonType.RoundedButton),
-    )
+
 
 
     private fun createAssets(): List<Asset> {
