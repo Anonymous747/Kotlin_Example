@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".fragments.FirstFragment">
 
     <RelativeLayout
         android:id="@+id/fullscreen_content_controls"
@@ -17,6 +17,7 @@
             android:id="@+id/top_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/android_icon_view"
                 android:layout_width="40dp"
@@ -67,25 +68,22 @@
                 android:src="@drawable/ic_account" />
 
         </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/tabs_relative_layout"
-                android:layout_below="@+id/top_relative_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/white"
-                    android:textColor="@android:color/black"
-                    android:text="Navigator"/>
-            </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_btn_list"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_below="@+id/top_relative_layout"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/single_button" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list"
             android:layout_width="wrap_content"
             android:layout_height="575dp"
-            android:layout_below="@+id/tabs_relative_layout"
+            android:layout_below="@+id/rv_btn_list"
             android:layout_marginTop="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/single_item" />

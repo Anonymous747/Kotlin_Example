@@ -1,7 +1,6 @@
-package com.example.example
+package com.example.example.activities
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -9,9 +8,17 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.example.R
+import com.example.example.adapters.AssetAdapter
+import com.example.example.adapters.ButtonAdapter
 import com.example.example.databinding.ActivityMainBinding
+import com.example.example.models.Asset
+import com.example.example.models.ButtonType
+import com.example.example.models.CustomButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,16 +37,32 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        /*binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }*/
+        val buttons = createButtons()
+        val rvButtons = findViewById<RecyclerView>(R.id.rv_btn_list)
+        rvButtons.adapter = ButtonAdapter(this, buttons)
+        rvButtons.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
         val assets = createAssets()
         val rvAssets = findViewById<RecyclerView>(R.id.rv_list)
         rvAssets.adapter = AssetAdapter(this, assets)
         rvAssets.layoutManager = LinearLayoutManager(this)
     }
+
+    private fun createButtons() = listOf<CustomButton>(
+        CustomButton("Navigation", View.OnClickListener {
+            print("Navigation tap")
+        }, ButtonType.ButtonWithIcon),
+        CustomButton("All", View.OnClickListener {
+            print("All tap")
+        }, ButtonType.RoundedButton),
+        CustomButton("Audiobooks", View.OnClickListener {
+            print("Audiobooks tap")
+        }, ButtonType.RoundedButton),
+        CustomButton("Cartoons", View.OnClickListener {
+            print("Cartoons tap")
+        }, ButtonType.RoundedButton),
+    )
+
 
     private fun createAssets(): List<Asset> {
         val assets = mutableListOf<Asset>()

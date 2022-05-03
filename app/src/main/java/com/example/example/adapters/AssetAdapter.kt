@@ -1,4 +1,4 @@
-package com.example.example
+package com.example.example.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,14 +8,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.example.R
+import com.example.example.models.Asset
 
 class AssetAdapter(private val context: Context, private val assets: List<Asset>) :
     RecyclerView.Adapter<AssetAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.single_item, parent, false))
     }
 
-    override fun onBindViewHolder(holder: AssetAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val asset = assets[position]
         holder.bind(asset)
     }
