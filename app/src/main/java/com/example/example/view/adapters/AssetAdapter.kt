@@ -1,4 +1,4 @@
-package com.example.example.adapters
+package com.example.example.view.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.example.R
-import com.example.example.models.Asset
+import com.example.example.models.data.Asset
 
 class AssetAdapter(private val context: Context, private val assets: List<Asset>) :
     RecyclerView.Adapter<AssetAdapter.ViewHolder>() {

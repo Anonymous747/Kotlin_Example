@@ -10,10 +10,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.example.R
-import com.example.example.adapters.AssetAdapter
-import com.example.example.adapters.ButtonAdapter
+import com.example.example.view.adapters.AssetAdapter
+import com.example.example.view.adapters.ButtonAdapter
 import com.example.example.databinding.FragmentFirstBinding
-import com.example.example.models.Asset
+import com.example.example.models.data.Asset
 import com.example.example.models.ButtonType
 import com.example.example.models.CustomButton
 

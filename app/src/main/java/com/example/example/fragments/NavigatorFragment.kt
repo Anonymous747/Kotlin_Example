@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.example.R
-import com.example.example.adapters.ButtonAdapter
+import com.example.example.view.adapters.ButtonAdapter
 import com.example.example.databinding.FragmentNavigatorBinding
 import com.example.example.models.ButtonType
 import com.example.example.models.CustomButton
